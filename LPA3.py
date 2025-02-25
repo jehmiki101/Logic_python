@@ -82,3 +82,24 @@ for i in range(1,101):
         qnt += 1
 media = soma / qnt
 print(media)
+
+# Exercício 02
+# -- 2 whiles
+tabuada = 1
+while tabuada <= 10:
+    print(f'TABUADA DO {tabuada}:')
+    i = 1
+    while i <= 10:
+        print(f'{tabuada} x {i} = {tabuada * i}')
+        i += 1
+    tabuada += 1
+
+# --2 for
+tabuada = 1
+for i in range(0,10,1):
+    print(f'TABUADA DO {tabuada}:')
+    i = 1
+    for i in range(0,11,1):
+        print(f'{tabuada} x {i} = {tabuada * i}')
+        i += 1
+    tabuada += 1
