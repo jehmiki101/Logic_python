@@ -1,4 +1,2 @@
-frase = input('Digite uma frase: ')
-tam = len(frase)
-frase_metade = frase[:int(tam/2)]
-print(frase_metade[-2:])
+calc = lambda x, y: (x + 5) * y
+print(calc(5, 10))
