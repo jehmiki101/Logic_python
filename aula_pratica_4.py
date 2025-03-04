@@ -1,3 +1,54 @@
+# Docstring - Documentação interna
+def soma3(x = 0, y = 0, z = 0):
+    '''
+    : param x: funcionamento de cada parâmetro
+    : param y: funcionamento de cada parâmetro
+    : param z: funcionamento de cada parâmetro
+    
+    '''
+    return x+y+z
+help(soma3) # interactive help
+
+# Exercício 01
+def fatorial(numero):
+    '''
+    Função que calcula a função fatorial de um número inteiro
+    :param num:
+    :return:
+    '''
+    fat = 1
+    for i in range(1, numero + 1, 1):
+        fat *= i
+    print(f'O fatorial de {numero} é igual a {fat}.')
+
+numero_inp = int(input('Digite um número: '))
+fatorial(numero_inp)
+
+
+# resolução
+def valida_int(pergunta, min, max):
+    x = int(input(pergunta))
+    while((x < min) or (x > max)):
+        x = int(input(pergunta))
+    return x
+
+def fatorial (num):
+    '''
+    :param num:
+    :return:
+    '''
+    fat = 1
+    if(num == 0):
+        return fat
+    for i in range(1, num + 1, 1):
+        fat *= i
+    return fat
+
+x = valida_int('Digite um número: ', 0, 99999)
+print(f'{x}! = {fatorial(x)}')
+
+
+# Exercício 02
 def valida_int(pergunta, min, max):
     x = int(input(pergunta))
     while((x < min) or (x > max)):
