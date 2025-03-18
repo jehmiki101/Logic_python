@@ -59,3 +59,27 @@ else:
         print('Você não é o Vinicius, e é menor de idade.')
     elif(idade > 100):
         print('Você não é o Vinicius, e possivelmente não existe')
+
+
+
+
+# Exercício 04 com match-Case
+
+print('Escolha o que quer comprar: ')
+print('1 - Maçã')
+print('2 - Laranja')
+print('3 - Banana')
+produto = int(input('Qual a sua escolha: '))
+quantidade = int(input('Quantas unidades? '))
+match (produto):
+    case 1:
+        pagar = quantidade * 2.3
+        print(f'Você comprou {quantidade} de maçãs. Total à pagar: {pagar}')
+    case 2:
+        pagar = quantidade * 3.6
+        print(f'Você comprou {quantidade} de laranjas. Total à pagar: {pagar}')
+    case 3:
+        pagar = quantidade * 1.85
+        print(f'Você comprou {quantidade} de bananas. Total à pagar: {pagar}')
+    case _:
+        print('Produto inexistente!')

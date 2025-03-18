@@ -77,3 +77,5 @@ s1 = list('Algorítmos')
 print(s1) #print separado
 print(''.join(s1)) #print agrupado
 s1[0] = 'a'
+
+
