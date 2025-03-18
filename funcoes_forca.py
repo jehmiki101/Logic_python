@@ -4,7 +4,7 @@ def existeArquivo(nomeArquivo):
     try:
         a = open(nomeArquivo, 'rt')
         a.close()
-    except FileNoFoundError:
+    except FileNotFoundError:
         return False
     else:
         return True
@@ -38,9 +38,9 @@ def listarArquivo(nomeArquivo):
         a.close()
         return dados
     
-def inserir_score(nomeArquivo, nomerJogador, score):
+def inserir_score(nomeArquivo, nomeJogador, score):
     try:
-        a = open(nomeArquivo, 'rt')
+        a = open(nomeArquivo, 'at')
     except:
         print('Erro ao abrir o arquivo.')
     else:

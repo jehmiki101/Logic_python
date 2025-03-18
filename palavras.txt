@@ -2,3 +2,11 @@ caixa
 abacaxi
 bola
 garrafa
+azul
+vermelho
+amarelo
+batata
+refrigerante
+agua
+chuva
+nuvem
