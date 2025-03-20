@@ -5,15 +5,17 @@ def escolha_servico():
     # prompt de escolha de serviço, transformação de caractere para maiúscula e limpeza de espaço final
     servico = input('>>').upper().strip()
 
-    valida_servico(servico)    
-    valores_servico(servico)
-    num_pagina()
+    servicoValido = valida_servico(servico)    
+    if (servicoValido):
+        valores_servico(servico)
+        num_pagina()
 
-def valida_servico():
+def valida_servico(servico):
     # verificação de serviço solicitado pelo usuário inválido
     if (servico != 'DIG' and servico != 'ICO' and servico != 'IPB' and servico != 'FOT'):
         print('Escolha inválida, entre com o tipo do serviço novamente')
-        quit()
+        return False
+    return True
 
     
 # função de especificação de valores por serviço
