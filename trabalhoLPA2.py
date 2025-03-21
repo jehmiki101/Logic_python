@@ -34,17 +34,15 @@ def num_pagina():
                 print('Não aceitamos tantas páginas de uma vez.')
                 print('Por favor, entre com o número de páginas novamente.')
                 continue
-            elif (paginas < 0): # verificação de número de páginas abaixo de zero
+            elif (paginas <= 0): # verificação de número de páginas abaixo de zero
                 print('Número de páginas abaixo de zero.')
                 print('Por favor, entre com o número de páginas novamente.')
                 continue
-  
         except ValueError: # verificação de número de páginas inválido
             print('Número de páginas não identificado, entre com o número de páginas novamente.')
             continue
-
+        # cálculo de desconto por quantidade de páginas
         percentual_desconto = desconto(paginas)
-        # cálculo do serviço, quantidade de páginas vezes o tipo de serviço menos o desconto
         qnt_paginas_desc = paginas * percentual_desconto
         return qnt_paginas_desc
 
@@ -59,6 +57,28 @@ def desconto(pg):
         desc = 0.25
     return 1 - desc
 
+# D - função de especificação de serviço adicional
+def servico_extra():
+    while True:
+        # D.a - Input serviço adicional
+        print('Deseja adicionar algum serviço?')
+        print('1 - Encadernação Simples - R$ 15,00')
+        print('2 - Encadernação Capa Dura - R$ 40,00')
+        print('0 - Não desejo mais nada')
+        adicional = int(input('>>'))
+        # verificação de input
+        valor_adicional = 0
+        if (adicional == 1):
+            valor_adicional = 15
+        elif (adicional == 2):
+            valor_adicional = 40
+        elif (adicional == 0):
+            valor_adicional = 0
+        # D.c - repetição do input se resposta incorreta
+        else:
+            continue
+        # D.b - retorno do valor
+        return valor_adicional
 
 # CÓDIGO PRINCIPAL / MAIN
 # A - print com a mensagem de boas vindas e nome, e lista de serviços
@@ -68,11 +88,10 @@ print('ICO - Impressão Colorida')
 print('IPB - Impressão Preto e Branco')
 print('FOT - Fotocópia')
 
-valor_adicional = 0
-
 final_servico = escolha_servico()
-qnt_paginas_desc = num_pagina()
+final_paginas = num_pagina()
+final_adicional = servico_extra()
 
-# E - total a pagar
-total_final = (final_servico * qnt_paginas_desc) + valor_adicional
-print(f'Valor total final: R$ {total_final}')
+# E - cálculo do total a pagar
+total_final = (final_servico * final_paginas) + final_adicional
+print(f'Total: R$ {total_final} (serviço: {final_servico} * páginas: {final_paginas} + extra: {final_adicional})')
