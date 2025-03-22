@@ -2,7 +2,6 @@
 print('Bem vindo a Livraria da Jéssica Hara!')
 
 
-
 print('-' * 50)
 print('-' * 17, 'MENU PRINCIPAL', '-' * 17)
 print('Escolha a opção desejada: ')
@@ -13,15 +12,19 @@ print('4 - Sair')
 
 # CÓDIGO PRINCIPAL / MAIN
 cadastrar_livro()
-# B - lista vazia e variável
-lista_livro[dic_livro]
-id_global = 0
 print(lista_livro)
+
+# B - lista vazia e variável
+lista_livro = []
+id_global = 0
+
+
+
 
 # C - função 
 def cadastrar_livro(id):
     nome = input('Qual o nome do livro? ')
     autor = input('Qual o autor do livro? ')
     editora = input('Qual a editora do livro? ')
-    dic_livro = {nome, autor, editora}
+    lista_livro = {'nome':nome, autor, editora}
     return dic_livro
