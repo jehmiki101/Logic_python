@@ -45,7 +45,7 @@ mochila[0][0][0] #'C'
 item = []
 mercado = []
 
-for i in range(3):
+for i in range(1):
     item.append(input('Nome do item: '))
     item.append(int(input('Quantidade: ')))
     item.append(float(input('Valor: ')))
@@ -67,7 +67,8 @@ games = [game1, game2, game3]
 print(games)
 
     #Dicionário com listas
-games = {'Nome':['Super Mario', 'Zelda', 'Pokemon'],'videogame':['Super Nintendo', 'Nintendo 64', 'Game boy'],'ano':[1990,1998,1999]}
+games = {'Nome':['Super Mario', 'Zelda', 'Pokemon'],'videogame':['Super Nintendo', 'Nintendo 64', 'Game boy'],'ano':[1990,1998,1999], 'Femow': 1}
+
 print(games)
 
 # Médotos em strings
