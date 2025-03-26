@@ -45,7 +45,7 @@ mochila[0][0][0] #'C'
 item = []
 mercado = []
 
-for i in range(1):
+for i in range(2):
     item.append(input('Nome do item: '))
     item.append(int(input('Quantidade: ')))
     item.append(float(input('Valor: ')))
