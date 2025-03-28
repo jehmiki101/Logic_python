@@ -19,14 +19,7 @@ def cadastrar_livro(id):
 # D - função de consulta de livro
 def consultar_livro():
     while True:
-        # D.a - Menu consultar livro
-        print('-' * 50)
-        print('-' * 14, 'MENU CONSULTAR LIVRO', '-' * 14)
-        print('Escolha a opção desejada: ')
-        print('1 - Consultar Todos')
-        print('2 - Consultar por Id')
-        print('3 - Consultar por Autor')
-        print('4 - Retornar ao menu')
+        menu_consultar()
         consulta = int(input('>>'))
         # D.a.V - Opção inválida de input
         if (consulta != 1 and consulta != 2 and consulta != 3 and consulta != 4):
@@ -38,18 +31,54 @@ def consultar_livro():
             break
         # D.a.I - Consultar todos os livros cadastrados
         elif (consulta == 1):
-            print('-' * 30)
-            global lista_livro
-            for dic in lista_livro:
+            consulta_geral()
+            continue
+        # D.a.II - Consultar livro por Id
+        elif (consulta == 2):
+            consulta_id()
+            continue
+        else: #TODO
+            print('Consulta por autor') #ERASE
+
+# D.a - Menu consultar livro
+def menu_consultar():
+    print('-' * 50)
+    print('-' * 14, 'MENU CONSULTAR LIVRO', '-' * 14)
+    print('Escolha a opção desejada: ')
+    print('1 - Consultar Todos')
+    print('2 - Consultar por Id')
+    print('3 - Consultar por Autor')
+    print('4 - Retornar ao menu')
+
+# D.a.I - função consultar todos os livros cadastrados
+def consulta_geral():
+    print('-' * 30)
+    global lista_livro
+    for dic in lista_livro:
+        print('id: ', dic['id'])
+        print('nome: ', dic['nome'])
+        print('autor: ', dic['autor'])
+        print('editora: ', dic['editora'])
+        print(' ')
+
+# D.a.II - Consultar livro por Id
+def consulta_id():
+    print('-' * 30)
+    global lista_livro
+    while True:
+        inp_id = int(input('Digite o id do livro: '))
+        if (inp_id <= 0):
+            print('Opção inválida, digite novamente')
+            continue
+        for dic in lista_livro:
+            if (inp_id == dic['id']):
                 print('id: ', dic['id'])
                 print('nome: ', dic['nome'])
                 print('autor: ', dic['autor'])
                 print('editora: ', dic['editora'])
-                print(' ')                
-        elif (consulta == 2): #TODO
-            print('Consulta por ID')#ERASE
-        else: #TODO
-            print('Consulta por autor') #ERASE
+        break
+
+
 
 
 
@@ -80,8 +109,8 @@ while True: #OK
         print('Saindo do sistema')
         break
     elif (servico == 1):# F.I - cadastro de livro #OK
-        cadastrar_livro(id_global)
         id_global += 1
+        cadastrar_livro(id_global)
         continue
     elif (servico == 2):#TODO F.II - consulta de livro
         consultar_livro()
@@ -93,18 +122,26 @@ while True: #OK
     break
 
 
-print(f'{lista_livro}')
+print(f'{lista_livro}') #ERASE
 
-
-
-
+'''
+print('-' * 30)
 lista_livro = []
-dic_lista = {'id':'id1','nome':'nome1','autor':'autor1','editora':'editora1'}
+dic_lista = {'id':1,'nome':'nome2','autor':'autor2','editora':'editora2'}
+dic_lista2 = {'id':2,'nome':'nome4','autor':'autor4','editora':'editora4'}
+lista_livro.append(dic_lista)
+lista_livro.append(dic_lista2)
 
-dic_lista1 = {'id':'id2','nome':'nome2','autor3':'autor2'}
-lista_livro = [dic_lista, dic_lista1]
-print(lista_livro[1])
-for dic in lista_livro:
-    print(dic.get('id'))
-    print(dic['nome'])
-    items = dic.items()
+while True:
+    consulta_id = int(input('Digite o id do livro: '))
+    if (consulta_id <= 0):
+        print('Opção inválida, digite novamente')
+        continue
+    for dic in lista_livro:
+        if (consulta_id == dic['id']):
+            print('id: ', dic['id'])
+            print('nome: ', dic['nome'])
+            print('autor: ', dic['autor'])
+            print('editora: ', dic['editora'])
+    continue
+'''
