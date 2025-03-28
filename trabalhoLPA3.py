@@ -1,4 +1,9 @@
-# C - função cadastrar livros #OK
+# REFATORAÇÃO PRINTS
+def invalido():
+    print('Opção Inválida')
+
+
+# C - Função cadastrar livros #OK
 def cadastrar_livro(id):
     # Menu de cadastrar livro
     print('-' * 50)
@@ -16,18 +21,18 @@ def cadastrar_livro(id):
         lista_livro.append(dic_lista)
         break
 
-# D - função de consulta de livro
+# D - Função de consulta de livro#OK
 def consultar_livro():
     while True:
         menu_consultar()
         consulta = int(input('>>'))
         # D.a.V - Opção inválida de input
         if (consulta != 1 and consulta != 2 and consulta != 3 and consulta != 4):
-            print('Opção inválida')
+            invalido()
             continue
-        # D.a.VI - Retornar ao sistema
+        # D.a.VI - Retornar ao menu principal
         elif (consulta == 4):
-            print('Voltando ao menu principal')
+            print('Voltando ao menu principal') #TODO
             break
         # D.a.I - Consultar todos os livros cadastrados
         elif (consulta == 1):
@@ -42,7 +47,7 @@ def consultar_livro():
             consulta_autor()
             continue
 
-# D.a - Menu consultar livro
+# D.a - Menu consultar livro#OK
 def menu_consultar():
     print('-' * 50)
     print('-' * 14, 'MENU CONSULTAR LIVRO', '-' * 14)
@@ -52,7 +57,7 @@ def menu_consultar():
     print('3 - Consultar por Autor')
     print('4 - Retornar ao menu')
 
-# D.a.I - função consultar todos os livros cadastrados
+# D.a.I - função consultar todos os livros cadastrados#OK
 def consulta_geral():
     print('-' * 30)
     global lista_livro
@@ -63,14 +68,14 @@ def consulta_geral():
         print('editora: ', dic['editora'])
         print(' ')
 
-# D.a.II - Consultar livro por Id
+# D.a.II - Consultar livro por Id #OK
 def consulta_id():
     print('-' * 30)
     global lista_livro
     while True:
         inp_id = int(input('Digite o id do livro: '))
         if (inp_id <= 0):
-            print('Opção inválida, digite novamente')
+            invalido()
             continue
         for dic in lista_livro:
             if (inp_id == dic['id']):
@@ -80,23 +85,47 @@ def consulta_id():
                 print('editora: ', dic['editora'])
         break
 
-# D.a.III - Consultar livro por Autor
+# D.a.III - Consultar livro por Autor #OK
 def consulta_autor():
     print('-' * 30)
     global lista_livro
     while True:
         inp_autor = input('Digite o Autor do livro: ')
         if (inp_autor == ''):
-            print('Opção Inválida')
+            invalido()
             continue
         for dic in lista_livro:
-            dic.get('autor', inp_autor)
-            print('id: ', dic['id'])
-            print('nome: ', dic['nome'])
-            print('autor: ', dic['autor'])
-            print('editora: ', dic['editora'])
-            print(' ')
+            if (dic.get('autor') == inp_autor):
+                print('id: ', dic['id'])
+                print('nome: ', dic['nome'])
+                print('autor: ', dic['autor'])
+                print('editora: ', dic['editora'])
+                break
+        else:
+            invalido()
         break
+
+
+# E - Função de remover livros #TODO
+def remover_livro():
+    while True:
+        print('-' * 50)
+        print('-' * 15, 'MENU REMOVER LIVRO', '-' * 15)
+        inp_remove = int(input('Digite o id do livro a ser removido: '))
+        if (inp_remove == ''):
+            invalido()
+            continue
+        for dic in lista_livro:
+            if (dic.get('id') == inp_remove):
+                dic.clear()
+                print('Livro removido com sucesso!')
+                break
+        else:
+            print('Id inválido')
+        break
+
+
+
 
 
 # CÓDIGO PRINCIPAL / MAIN
@@ -109,7 +138,7 @@ id_global = 0
 
 # Escolha de serviço
 while True: #OK
-    # F - estrutura de menu
+    # F - estrutura do menu principal
     print('-' * 50)
     print('-' * 17, 'MENU PRINCIPAL', '-' * 17)
     print('Escolha a opção desejada: ')
@@ -120,7 +149,7 @@ while True: #OK
     servico = int(input('>> '))# input escolha do servico
 
     if (servico != 1 and servico != 2 and servico != 3 and servico != 4):# F.V - opção inválida e continuação do menu #OK
-        print('Opção inválida')
+        invalido()
         continue #TODO VERIFICAR
     elif (servico == 4):# F.IV - encerrar programa #OK
         print('Saindo do sistema')
@@ -133,34 +162,50 @@ while True: #OK
         consultar_livro()
         #D.a.IV - voltar ao menu principal
         continue
-        print('consulta')#ERASE
     elif (servico == 3):# F.III - remover livro
-        print('remover')#ERASE
+        remover_livro()
+        continue
     break
 
 
 print(f'{lista_livro}') #ERASE
 
-'''
+
+
+def invalido():
+    print('Opção Inválida')
 print('-' * 30)
 lista_livro = []
 dic_lista = {'id':1,'nome':'nome2','autor':'autor2','editora':'editora2'}
 dic_lista2 = {'id':2,'nome':'nome4','autor':'autor2','editora':'editora4'}
 lista_livro.append(dic_lista)
 lista_livro.append(dic_lista2)
-
+print(lista_livro)
 
 while True:
-    inp_autor = input('Digite o Autor do livro: ')
-    if (inp_autor == ''):
-        print('Opção Inválida')
+    inp_remove = int(input('Digite o id do livro a ser removido: '))
+    if (inp_remove == ''):
+        invalido()
         continue
-    for dic in lista_livro:
-        dic.get('autor', inp_autor)
-        print('id: ', dic['id'])
-        print('nome: ', dic['nome'])
-        print('autor: ', dic['autor'])
-        print('editora: ', dic['editora'])
+    index = 0
+
+    # if (inp_remove <= len(lista_livro)):
+    for i in lista_livro:
+        if (i.get('id') == inp_remove):
+            index = i
+            print(index)
+
+    for dic in range(len(lista_livro)):
+        index = dic
+        print(index)
+        lista_livro.pop(index)
     break
 
-'''
+
+
+print(lista_livro)
+
+
+
+'''        if (dic.get('id') == inp_remove):
+            index 
