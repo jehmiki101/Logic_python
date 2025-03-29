@@ -106,25 +106,24 @@ def consulta_autor():
         break
 
 
-# E - Função de remover livros #TODO
+# E - Função de remover livros
 def remover_livro():
     while True:
-        print('-' * 50)
-        print('-' * 15, 'MENU REMOVER LIVRO', '-' * 15)
-        inp_remove = int(input('Digite o id do livro a ser removido: '))
-        if (inp_remove == ''):
-            invalido()
-            continue
-        for dic in lista_livro:
-            if (dic.get('id') == inp_remove):
-                dic.clear()
+        try:
+            inp_remove = int(input('Digite o id do livro a ser removido: '))
+            if (inp_remove <= len(lista_livro) and inp_remove > 0):
+                index = 0
+                for i in range(len(lista_livro)):
+                    if (lista_livro[i].get('id') == inp_remove):
+                        index = i
+                lista_livro.pop(index)
                 print('Livro removido com sucesso!')
                 break
-        else:
-            print('Id inválido')
-        break
-
-
+            else:
+                print('Id Inválido')
+                break
+        except:
+            invalido()
 
 
 
@@ -158,7 +157,7 @@ while True: #OK
         id_global += 1
         cadastrar_livro(id_global)
         continue
-    elif (servico == 2):#TODO F.II - consulta de livro
+    elif (servico == 2):# F.II - consulta de livro
         consultar_livro()
         #D.a.IV - voltar ao menu principal
         continue
@@ -168,10 +167,9 @@ while True: #OK
     break
 
 
-print(f'{lista_livro}') #ERASE
 
 
-
+'''
 def invalido():
     print('Opção Inválida')
 print('-' * 30)
@@ -183,29 +181,31 @@ lista_livro.append(dic_lista2)
 print(lista_livro)
 
 while True:
-    inp_remove = int(input('Digite o id do livro a ser removido: '))
-    if (inp_remove == ''):
+    try:
+        inp_remove = int(input('Digite o id do livro a ser removido: '))
+        if (inp_remove <= len(lista_livro) and inp_remove > 0):
+            index = 0
+            for i in range(len(lista_livro)):
+                if (lista_livro[i].get('id') == inp_remove):
+                    index = i
+            lista_livro.pop(index)
+        else:
+            print('Id Inválido')
+    except:
         invalido()
-        continue
-    index = 0
-
-    # if (inp_remove <= len(lista_livro)):
-    for i in lista_livro:
-        if (i.get('id') == inp_remove):
-            index = i
-            print(index)
-
-    for dic in range(len(lista_livro)):
-        index = dic
-        print(index)
-        lista_livro.pop(index)
-    break
-
 
 
 print(lista_livro)
 
 
 
-'''        if (dic.get('id') == inp_remove):
+      if (dic.get('id') == inp_remove):
             index 
+            
+    for i in range(len(lista_livro)):
+        index = i
+        if (.get('id') == inp_remove):
+            print(i)
+    lista_livro.pop(index)
+    print(lista_livro)
+    '''

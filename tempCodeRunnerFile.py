@@ -1,4 +1,3 @@
-
 def invalido():
     print('Opção Inválida')
 print('-' * 30)
@@ -10,15 +9,15 @@ lista_livro.append(dic_lista2)
 print(lista_livro)
 
 while True:
-    inp_remove = int(input('Digite o id do livro a ser removido: '))
-    if (inp_remove == ''):
-        invalido()
-        continue
-    index = 0
-
-    # if (inp_remove <= len(lista_livro)):
-    for i in lista_livro:
-        if (i.get('id') == inp_remove):
-            index = i
-            print(index)
-        lista_livro.pop(index)
+    try:
+        inp_remove = int(input('Digite o id do livro a ser removido: '))
+        if (inp_remove <= len(lista_livro) and inp_remove > 0):
+            index = 0
+            for i in range(len(lista_livro)):
+                if (lista_livro[i].get('id') == inp_remove):
+                    index = i
+            lista_livro.pop(index)
+        else:
+            invalido()
+    except:
+        print('Id inválido')
